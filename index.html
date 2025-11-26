@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCHITPROMO - Right Influence. Right Price.</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark background for modern look */
+            color: #e5e7eb;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #4ade80, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .cta-button-brand {
+            background-image: linear-gradient(to right, #10b981, #059669);
+            transition: transform 0.2s;
+        }
+        .cta-button-brand:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+        .cta-button-influencer {
+            border: 2px solid #34d399;
+            color: #34d399;
+            transition: background-color 0.2s;
+        }
+        .cta-button-influencer:hover {
+            background-color: #1f2937;
+        }
+        .section-separator {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #4ade80, #10b981);
+            margin: 2rem auto;
+            border-radius: 9999px;
+        }
+        /* Custom class for initial hidden state and transition */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(48px); /* Start 12 units (3rem) down */
+            transition: opacity 1.0s ease-out, transform 1.0s ease-out;
+        }
+        .section-reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Message Box Styling */
+        #message-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 30px;
+            background-color: #10b981;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Mock Message Box for Form Feedback -->
+    <div id="message-box" role="alert"></div>
+
+    <!-- Header / Navigation Bar (Simple) -->
+    <header class="p-4 bg-gray-900 shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-extrabold text-white flex items-center">
+                <span class="text-3xl mr-2 text-green-400">U</span>CHITPROMO<sup class="text-xs ml-1 text-green-400">TM</sup>
+            </div>
+            <a href="#final-cta" class="hidden sm:inline-block px-4 py-2 text-sm font-semibold text-white bg-green-500 rounded-lg hover:bg-green-600 transition duration-300">आज ही शुरू करें</a>
+        </div>
+    </header>
+
+    <!-- SECTION 1 — HERO SECTION (TOP BANNER) -->
+    <section class="py-20 text-center bg-gray-900 border-b border-gray-800">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="text-lg font-semibold text-green-400 mb-3 tracking-wider">
+                ⭐ Right Influence. Right Price.
+            </p>
+            <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight mb-6">
+                <span class="text-white">Grow Your Brand with</span> <span class="text-gradient">Fair & Fast</span> Influencer Promotions
+            </h1>
+            <p class="text-xl text-gray-400 mb-10">
+                UchitPromo is India’s first <strong class="text-green-300">Uber-style platform</strong> where influencers pick promotion orders instantly — giving brands real reach at the right price.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#for-brands" class="cta-button-brand px-10 py-4 text-lg font-bold text-white rounded-xl shadow-lg hover:shadow-green-500/50">
+                    🚀 Start a Campaign
+                </a>
+                <a href="#for-influencers" class="cta-button-influencer px-10 py-4 text-lg font-bold rounded-xl hover:bg-gray-800">
+                    ⭐ Become an Influencer
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-gray-500">
+                No hidden charges. No fake reach. 100% transparent.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 2 — SOCIAL PROOF (TRUST BUILDER) -->
+    <section class="py-12 bg-[#121820]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-4 rounded-xl">
+                    <span class="text-3xl text-green-400">✔</span>
+                    <p class="mt-2 text-gray-300 font-semibold">Trusted by Small Businesses</p>
+                </div>
+                <div class="p-4 rounded-xl">
+                    <span class="text-3xl text-green-400">✔</span>
+                    <p class="mt-2 text-gray-300 font-semibold">Verified Influencers</p>
+                </div>
+                <div class="p-4 rounded-xl">
+                    <span class="text-3xl text-green-400">✔</span>
+                    <p class="mt-2 text-gray-300 font-semibold">Fair Pricing Guarantee</p>
+                </div>
+                <div class="p-4 rounded-xl">
+                    <span class="text-3xl text-green-400">✔</span>
+                    <p class="mt-2 text-gray-300 font-semibold">Transparent Reporting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 — HOW IT WORKS (3-STEP SYSTEM) -->
+    <section class="py-20 bg-gray-900 section-reveal">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-4">यह कैसे काम करता है?</h2>
+            <p class="text-lg text-gray-400 mb-12">Uber-स्टाइल सरलता से प्रमोशन लॉन्च करें।</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Step 1 -->
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-green-500">
+                    <span class="text-5xl font-extrabold text-green-400 block mb-4">1️⃣</span>
+                    <h3 class="text-2xl font-bold mb-3">Create a Campaign</h3>
+                    <p class="text-gray-400">Choose your budget, audience, and promotion type (Reels, Stories, Posts, UGC).</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-green-500">
+                    <span class="text-5xl font-extrabold text-green-400 block mb-4">2️⃣</span>
+                    <h3 class="text-2xl font-bold mb-3">Influencers Pick Your Order</h3>
+                    <p class="text-gray-400">Like Uber drivers accept rides, influencers accept your promotion request instantly.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-xl hover:bg-gray-700 transition duration-300 border-t-4 border-green-500">
+                    <span class="text-5xl font-extrabold text-green-400 block mb-4">3️⃣</span>
+                    <h3 class="text-2xl font-bold mb-3">Track Results in Real-Time</h3>
+                    <p class="text-gray-400">Your dashboard shows reach, views, clicks, sales, and conversions — fully live & transparent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- SECTION 4 — WHY UCHITPROMO (CORE BENEFITS) -->
+    <section class="py-20 bg-[#121820] section-reveal">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-4 text-gradient">⭐ Fair Price. Real Influence. Zero Hassle.</h2>
+            <p class="text-lg text-gray-400 mb-12">UCHITPROMO क्यों चुनें? क्योंकि हम पारदर्शिता और गति को प्राथमिकता देते हैं।</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <!-- Benefit 1 -->
+                <div class="p-6 bg-gray-800 rounded-xl shadow-md">
+                    <h4 class="text-xl font-bold mb-2 text-white">🚀 Instant Promotions</h4>
+                    <p class="text-gray-400">Campaigns get picked within minutes by verified influencers. Zero waiting time.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="p-6 bg-gray-800 rounded-xl shadow-md">
+                    <h4 class="text-xl font-bold mb-2 text-white">💰 Transparent Pricing</h4>
+                    <p class="text-gray-400">No negotiations. No inflated rates. Just fair (Uchit) pricing for guaranteed results.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="p-6 bg-gray-800 rounded-xl shadow-md">
+                    <h4 class="text-xl font-bold mb-2 text-white">✅ Verified & Trusted Creators</h4>
+                    <p class="text-gray-400">Creators are approved using niche filters, engagement quality, and audience insights.</p>
+                </div>
+                <!-- Benefit 4 -->
+                <div class="p-6 bg-gray-800 rounded-xl shadow-md">
+                    <h4 class="text-xl font-bold mb-2 text-white">🤖 AI Matching System</h4>
+                    <p class="text-gray-400">We connect the right influencer with the right audience for the right results. Precision guaranteed.</p>
+                </div>
+                <!-- Benefit 5 -->
+                <div class="p-6 bg-gray-800 rounded-xl shadow-md">
+                    <h4 class="text-xl font-bold mb-2 text-white">📊 End-to-End Dashboard</h4>
+                    <p class="text-gray-400">Approve content, track metrics, release payments — manage everything from one simple place.</p>
+                </div>
+                <!-- Benefit 6 -->
+                <div class="p-6 bg-gray-800 rounded-xl shadow-md">
+                    <h4 class="text-xl font-bold mb-2 text-white">🔒 Brand Safety Filters</h4>
+                    <p class="text-gray-400">Ensure your promotions appear only with safe and appropriate content creators.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- SECTION 5 — FOR BRANDS (SELL MORE, REACH FASTER) -->
+    <section id="for-brands" class="py-20 bg-gray-900 border-t border-gray-800 section-reveal">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">Boost Your Product Sales with <span class="text-green-400">Instant</span> Influencer Promotions</h2>
+                <p class="text-lg text-gray-400 mb-8">UchitPromo helps brands take control of their marketing spend and track <strong class="text-white">ROI transparently.</strong></p>
+                
+                <ul class="space-y-3 text-gray-300">
+                    <li>✔️ Increase reach in target areas</li>
+                    <li>✔️ Drive real sales and conversions</li>
+                    <li>✔️ Launch new products instantly</li>
+                    <li>✔️ Run mass influencer campaigns with ease</li>
+                    <li>✔️ Get authentic UGC content</li>
+                    <li>✔️ Track ROI transparently</li>
+                </ul>
+                
+                <a href="#guide-download" class="mt-8 inline-block cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg hover:shadow-green-500/50">
+                    👉 Get Our Free Strategy Guide
+                </a>
+            </div>
+            <!-- Placeholder Image/Graphic -->
+            <div class="bg-gray-800 rounded-xl h-64 flex items-center justify-center text-gray-500 text-xl font-semibold">
+                [Brand Dashboard Mockup Placeholder]
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6 — FOR INFLUENCERS (EARN DAILY) -->
+    <section id="for-influencers" class="py-20 bg-[#121820] border-t border-gray-800 section-reveal">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Placeholder Image/Graphic -->
+            <div class="bg-gray-800 rounded-xl h-64 flex items-center justify-center text-gray-500 text-xl font-semibold order-2 md:order-1">
+                [Influencer App Screen Mockup Placeholder]
+            </div>
+            <div class="order-1 md:order-2">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-4"><span class="text-green-400">Earn Like Uber Drivers.</span> Create Like Influencers.</h2>
+                <p class="text-lg text-gray-400 mb-8">Say goodbye to negotiation headaches and delayed payments. Focus on creating great content.</p>
+                
+                <!-- Influencer Incentive Highlight - NEW FOCUS -->
+                <div class="bg-yellow-900/30 border border-yellow-700/50 p-4 rounded-lg mb-6 text-center">
+                    <p class="text-xl font-extrabold text-yellow-400">🔥 Exclusive Creator Offer:</p>
+                    <p class="text-lg text-white">Get <strong class="text-yellow-200">ZERO COMMISSION</strong> on your first 10 orders!</p>
+                </div>
+
+                <ul class="space-y-3 text-gray-300 mb-8">
+                    <li>✔️ Instant campaign alerts (Local & Global)</li>
+                    <li>✔️ Fair payouts & daily earnings</li>
+                    <li>✔️ No negotiation headaches (Fixed prices)</li>
+                    <li>✔️ Rating & leaderboard rewards</li>
+                    <li>✔️ Long-term brand partnerships</li>
+                </ul>
+                
+                <!-- Lead Capture Form - NOW WITH FIREBASE INTEGRATION -->
+                <div class="mt-8 p-6 bg-gray-700 rounded-xl shadow-inner">
+                    <p class="text-xl font-bold mb-3 text-white">Ready to Start Earning?</p>
+                    <form id="influencerForm" onsubmit="event.preventDefault(); saveInfluencerLead(this);">
+                        <input id="influencerEmail" type="email" placeholder="Enter your best email address" required class="w-full p-3 mb-3 rounded-lg bg-gray-800 text-white border border-green-500 focus:ring-green-500 focus:border-green-500" />
+                        <button type="submit" class="w-full cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl">
+                            🚀 Join the Creator Network
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7 — FEATURES SECTION (PLATFORM POWER) -->
+    <section class="py-20 bg-gray-900 border-t border-gray-800 section-reveal">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-4 text-gradient">📌 Key Features: Platform Power</h2>
+            <p class="text-lg text-gray-400 mb-12">हर फीचर आपके प्रमोशन की सफलता और कमाई के लिए डिज़ाइन किया गया है।</p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                <div class="p-4 bg-gray-800 rounded-xl font-semibold">Live performance analytics</div>
+                <div class="p-4 bg-gray-800 rounded-xl font-semibold">Instant order notifications</div>
+                <div class="p-4 bg-gray-800 rounded-xl font-semibold">Wallet and payout system</div>
+                <div class="p-4 bg-gray-800 rounded-xl font-semibold">Leaderboard gamification</div>
+                <div class="p-4 bg-gray-800 rounded-xl font-semibold">AI-generated campaign suggestions</div>
+                <div class="p-4 bg-gray-800 rounded-xl font-semibold">Verified audience insights</div>
+                <div class="p-4 bg-gray-800 rounded-xl font-semibold">Secure payments with UPI, Bank</div>
+                <div class="p-4 bg-gray-800 rounded-xl font-semibold">Influencer scorecards</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8 — TESTIMONIALS / SOCIAL REVIEWS -->
+    <section class="py-20 bg-[#121820] border-t border-gray-800 section-reveal">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-10 text-white">⭐ What Our Users Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-l-4 border-green-500">
+                    <p class="italic text-gray-300 mb-4">“We grew our new brand to 50K reach within 24 hours — amazing platform. The instant pickup model is a game-changer.”</p>
+                    <p class="font-bold text-green-400">— Small Business Owner</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-l-4 border-green-500">
+                    <p class="italic text-gray-300 mb-4">“I earned ₹7,200 this week doing just 4 reels. No tension, no negotiation. I just focus on making great content.”</p>
+                    <p class="font-bold text-green-400">— Creator, Patna</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9 — LEAD MAGNET (FOR BRANDS - CAPTURE EMAIL) -->
+    <section id="guide-download" class="py-20 bg-green-900/30 border-t border-b border-green-700/50 section-reveal">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold mb-4 text-white">📈 Brand Success Guide 2025</h2>
+            <p class="text-xl text-green-200 mb-8">Download our Free Report: **"The True Cost of Influencer Marketing in India and How to Save 40%."**</p>
+            
+            <!-- This form is also updated to save the lead -->
+            <form onsubmit="event.preventDefault(); saveBrandLead(this);" class="max-w-md mx-auto flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <input id="brandEmail" type="email" placeholder="Your Business Email" required class="flex-grow p-4 rounded-xl bg-gray-800 text-white border border-green-500 focus:ring-green-500 focus:border-green-500" />
+                <button type="submit" class="cta-button-brand px-8 py-4 text-lg font-bold text-white rounded-xl">
+                    📥 Get Free Guide Now
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- SECTION 10 — FINAL CTA (BOTTOM SECTION) -->
+    <section id="final-cta" class="py-20 bg-gray-900 border-t border-gray-800 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 text-white">Your Brand Deserves Fair Promotion.</h2>
+            <h3 class="text-2xl text-gradient font-bold mb-12">Start Your Journey with UchitPromo Today.</h3>
+            
+            <!-- Final CTA Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#for-brands" class="cta-button-brand px-10 py-4 text-lg font-bold text-white rounded-xl shadow-lg hover:shadow-green-500/50">
+                    🚀 Launch a Campaign
+                </a>
+                <a href="#for-influencers" class="cta-button-influencer px-10 py-4 text-lg font-bold rounded-xl hover:bg-gray-800">
+                    ⭐ Sign Up as Influencer
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECTION 11 — LEAD DISPLAY (ADMIN VIEW) -->
+    <section id="lead-display" class="py-20 bg-gray-950 border-t border-gray-800 section-reveal">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-extrabold mb-4 text-red-500 text-center">🔐 ADMIN/DEVELOPER VIEW: Captured Leads</h2>
+            <p class="text-lg text-gray-400 mb-8 text-center">यह लिस्ट आपको आपके सेव किए गए लीड्स (Influencer Leads) तुरंत दिखाती है। (ब्रांड लीड्स को भी ऐसे ही देखा जा सकता है।)</p>
+            
+            <div id="leads-container" class="space-y-4">
+                <!-- Leads will be injected here by JavaScript -->
+                <p class="text-center text-gray-500">Loading leads...</p>
+            </div>
+            <p class="mt-8 text-center text-gray-500 text-sm">Collection Path: `artifacts/{appId}/public/data/influencer_leads`</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-black text-center text-gray-400">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Social Icons (Added for Trust) -->
+            <div class="flex justify-center space-x-6 mb-6">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/uchitpromo/reels/" target="_blank" class="text-gray-400 hover:text-pink-500 transition duration-300" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@UchitPromo" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300" aria-label="YouTube">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2A71 71 0 0 0 12 4c-4 0-8 0-10.6.42a2.78 2.78 0 0 0-1.94 2C.28 8.1 0 12 0 12s.28 3.9.5 5.58a2.78 2.78 0 0 0 1.94 2c2.6.42 10.6.42 10.6.42s8 0 10.6-.42a2.78 2.78 0 0 0 1.94-2C23.72 15.9 24 12 24 12s-.28-3.9-.5-5.58z"></path><polygon points="9 15 16 12 9 9 9 15"></polygon></svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/%F0%9F%85%84-uchitpromo%E2%84%A2-a8283339a/" target="_blank" class="text-gray-400 hover:text-blue-500 transition duration-300" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <!-- X (Twitter) -->
+                <a href="https://x.com/uchitpromo" target="_blank" class="text-gray-400 hover:text-white transition duration-300" aria-label="X/Twitter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.261 8.526 11.66h-6.839l-5.64-7.933-4.48 7.933H2.016l7.73-10.957L2.102 2.25h3.176l4.286 6.137 5.724-6.137zM17.842 20.742h2.543L9.673 3.32H7.075L17.842 20.742z"></path></svg>
+                </a>
+            </div>
+            
+            <p class="text-sm">
+                UchitPromo © 2025 — “Right Influence. Right Price.” | All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Firebase, Scroll Reveal Animation and Message Box -->
+    <script type="module">
+        // Firebase Imports (MUST use type="module" for imports)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, addDoc, collection, serverTimestamp, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global Firebase variables
+        let db;
+        let auth;
+        let authReady = false;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        // Function to display a temporary message (replaces alert)
+        window.showMessage = function(text, success = true) {
+            const msgBox = document.getElementById('message-box');
+            msgBox.textContent = text;
+            msgBox.style.backgroundColor = success ? '#10b981' : '#ef4444'; // Green for success, Red for error
+            msgBox.style.opacity = 1;
+            
+            setTimeout(() => {
+                msgBox.style.opacity = 0;
+            }, 3000);
+        }
+
+        /**
+         * Influencer Lead Capture: Saves the email to Firestore's public collection.
+         * The collection path is: /artifacts/{appId}/public/data/influencer_leads
+         */
+        window.saveInfluencerLead = async function(form) {
+            if (!authReady) {
+                showMessage("Authentication is not ready. Please try again in a moment.", false);
+                return;
+            }
+
+            const emailInput = form.querySelector('#influencerEmail');
+            const email = emailInput.value;
+
+            try {
+                // Public data path: /artifacts/{appId}/public/data/{collection_name}
+                const collectionPath = `artifacts/${appId}/public/data/influencer_leads`;
+                
+                await addDoc(collection(db, collectionPath), {
+                    email: email,
+                    source: 'Influencer_Section',
+                    timestamp: serverTimestamp(),
+                    userId: auth.currentUser?.uid || 'anonymous' // Record the user ID for tracking
+                });
+
+                showMessage(`Success! Your email (${email}) is saved. We'll contact you soon!`);
+                emailInput.value = ''; // Clear the form field
+
+            } catch (error) {
+                console.error("Error saving influencer lead:", error);
+                showMessage("Sorry, an error occurred while saving your lead. Please try again.", false);
+            }
+        }
+
+        /**
+         * Brand Lead Capture: Saves the email to Firestore's public collection.
+         * The collection path is: /artifacts/{appId}/public/data/brand_leads
+         */
+        window.saveBrandLead = async function(form) {
+            if (!authReady) {
+                showMessage("Authentication is not ready. Please try again in a moment.", false);
+                return;
+            }
+
+            const emailInput = form.querySelector('#brandEmail');
+            const email = emailInput.value;
+
+            try {
+                // Public data path: /artifacts/{appId}/public/data/{collection_name}
+                const collectionPath = `artifacts/${appId}/public/data/brand_leads`;
+                
+                await addDoc(collection(db, collectionPath), {
+                    email: email,
+                    source: 'Brand_Guide_Download',
+                    timestamp: serverTimestamp(),
+                    userId: auth.currentUser?.uid || 'anonymous'
+                });
+
+                showMessage(`Guide sent! Your email (${email}) is saved. Check your inbox.`);
+                emailInput.value = ''; // Clear the form field
+
+            } catch (error) {
+                console.error("Error saving brand lead:", error);
+                showMessage("Sorry, an error occurred while saving your lead. Please try again.", false);
+            }
+        }
+        
+        /**
+         * Loads and displays real-time influencer leads using onSnapshot.
+         */
+        function loadLeads() {
+            if (!authReady || !db) return;
+
+            // Targeting the Influencer Leads collection for display
+            const collectionPath = `artifacts/${appId}/public/data/influencer_leads`;
+            const leadsContainer = document.getElementById('leads-container');
+
+            // Set up real-time listener (onSnapshot)
+            const q = collection(db, collectionPath);
+            onSnapshot(q, (querySnapshot) => {
+                const leads = [];
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if (data.email) {
+                        // Safely format the timestamp
+                        const date = data.timestamp && data.timestamp.toDate ? data.timestamp.toDate().toLocaleString('en-IN', {
+                            day: '2-digit', month: 'short', year: 'numeric',
+                            hour: '2-digit', minute: '2-digit', hour12: true
+                        }) : 'N/A';
+
+                        leads.push({
+                            id: doc.id,
+                            email: data.email,
+                            source: data.source || 'Unknown',
+                            timestamp: date
+                        });
+                    }
+                });
+
+                // Sort leads by timestamp (newest first)
+                leads.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                // Render the list HTML
+                if (leads.length === 0) {
+                    leadsContainer.innerHTML = '<p class="text-center text-gray-500 p-8 bg-gray-800 rounded-xl">No influencer leads captured yet.</p>';
+                    return;
+                }
+
+                leadsContainer.innerHTML = leads.map(lead => `
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700 transition">
+                        <div class="font-bold text-green-400 break-all">${lead.email}</div>
+                        <div class="text-sm text-gray-400 mt-1 sm:mt-0 sm:text-right">
+                            <span class="block">${lead.source}</span>
+                            <span class="text-xs text-gray-500">${lead.timestamp}</span>
+                        </div>
+                    </div>
+                `).join('');
+
+            }, (error) => {
+                console.error("Error loading leads:", error);
+                leadsContainer.innerHTML = '<p class="text-center text-red-400 p-8 bg-gray-800 rounded-xl">Failed to load leads. Check console for errors.</p>';
+            });
+        }
+        window.loadLeads = loadLeads; // Make global
+
+        // Scroll Reveal Animation Logic
+        document.addEventListener('DOMContentLoaded', async () => {
+            // --- 1. FIREBASE INITIALIZATION & AUTHENTICATION ---
+            try {
+                const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                
+                // Sign in with the provided custom token or anonymously
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                authReady = true;
+                console.log("Firebase initialized and user authenticated.");
+                
+                // Load leads after successful authentication
+                loadLeads(); // Load and start listening for real-time updates
+
+            } catch (error) {
+                console.error("Firebase setup error:", error);
+                showMessage("Failed to connect to the database. Lead capture is disabled.", false);
+            }
+            // --- END FIREBASE SETUP ---
+
+            // --- 2. SCROLL REVEAL ANIMATION ---
+            const sections = document.querySelectorAll('.section-reveal');
+
+            const observerOptions = {
+                root: null, 
+                threshold: 0.2, 
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay ? parseInt(entry.target.dataset.delay) : 0;
+                        
+                        setTimeout(() => {
+                            entry.target.classList.add('show');
+                        }, delay);
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            let delay = 0;
+            const staggerIncrement = 150; 
+            
+            sections.forEach(section => {
+                section.dataset.delay = delay;
+                observer.observe(section);
+                delay += staggerIncrement; 
+            });
+        });
+    </script>
+
+</body>
+</html>
