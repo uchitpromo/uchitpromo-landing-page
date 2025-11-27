@@ -56,7 +56,7 @@
         .section-reveal {
             opacity: 0;
             transform: translateY(48px);
-            /* Start 12 units (3rem) down */
+            /* Start 3rem down */
             transition: opacity 1.0s ease-out, transform 1.0s ease-out;
         }
 
@@ -79,8 +79,10 @@
             opacity: 0;
             transition: opacity 0.5s ease;
             font-weight: bold;
-            pointer-events: none; /* Prevent clicks when hidden */
+            pointer-events: none;
+            /* Prevent clicks when hidden */
         }
+
         #message-box.visible {
             opacity: 1;
             pointer-events: auto;
@@ -100,7 +102,8 @@
                     class="text-xs ml-1 text-green-400">TM</sup>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="#roadmap" class="hidden md:inline-block text-gray-300 hover:text-white text-sm font-semibold transition">Roadmap</a>
+                <a href="#roadmap"
+                    class="hidden md:inline-block text-gray-300 hover:text-white text-sm font-semibold transition">Roadmap</a>
                 <a href="#final-cta"
                     class="hidden sm:inline-block px-4 py-2 text-sm font-semibold text-white bg-green-500 rounded-lg hover:bg-green-600 transition duration-300">
                     Get Started
@@ -119,7 +122,7 @@
                 India's First <span class="text-gradient">Transparent</span> <br>Influencer Marketplace
             </h1>
             <p class="text-xl text-gray-400 mb-10 leading-relaxed">
-                We connect brands with verified influencers in a <strong>fair, fast, and transparent</strong> manner. 
+                We connect brands with verified influencers in a <strong>fair, fast, and transparent</strong> manner.
                 Built like an on-demand cab app—instantly discover, compare, and book.
             </p>
 
@@ -141,22 +144,28 @@
     </section>
 
     <!-- SECTION 2 — THE PROBLEM VS SOLUTION -->
-    <section class="py-20 bg-[#121820] section-reveal">
+    <!-- REMOVED 'section-reveal' for immediate visibility -->
+    <section class="py-20 bg-[#121820]">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">Why We Built This</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">The influencer market is broken. Small brands face unclear pricing and unverified results, while creators struggle to find consistent work.</p>
+                <p class="text-gray-400 max-w-2xl mx-auto">The influencer market is broken. Small brands face unclear
+                    pricing and unverified results, while creators struggle to find consistent work.</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- The Problem -->
                 <div class="bg-red-900/10 border border-red-900/30 p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold text-red-400 mb-6">❌ The Market Problem</h3>
                     <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start"><span class="mr-3 text-red-500">⚠</span> Unclear pricing & hidden agency fees</li>
-                        <li class="flex items-start"><span class="mr-3 text-red-500">⚠</span> Time-consuming negotiations</li>
-                        <li class="flex items-start"><span class="mr-3 text-red-500">⚠</span> Unverified engagement (Fake followers)</li>
-                        <li class="flex items-start"><span class="mr-3 text-red-500">⚠</span> Payment delays for creators</li>
+                        <li class="flex items-start"><span class="mr-3 text-red-500">⚠</span> Unclear pricing & hidden
+                            agency fees</li>
+                        <li class="flex items-start"><span class="mr-3 text-red-500">⚠</span> Time-consuming negotiations
+                        </li>
+                        <li class="flex items-start"><span class="mr-3 text-red-500">⚠</span> Unverified engagement (Fake
+                            followers)</li>
+                        <li class="flex items-start"><span class="mr-3 text-red-500">⚠</span> Payment delays for creators
+                        </li>
                     </ul>
                 </div>
 
@@ -164,10 +173,14 @@
                 <div class="bg-green-900/10 border border-green-900/30 p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold text-green-400 mb-6">✅ The UchitPromo Solution</h3>
                     <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start"><span class="mr-3 text-green-500">✔</span> <strong>Unified App:</strong> Book influencers like a cab.</li>
-                        <li class="flex items-start"><span class="mr-3 text-green-500">✔</span> <strong>Public Pricing:</strong> Fixed rates for Reels, Stories, Posts.</li>
-                        <li class="flex items-start"><span class="mr-3 text-green-500">✔</span> <strong>Escrow Security:</strong> Payments are safe until work is done.</li>
-                        <li class="flex items-start"><span class="mr-3 text-green-500">✔</span> <strong>Real-time Tracking:</strong> Live campaign analytics.</li>
+                        <li class="flex items-start"><span class="mr-3 text-green-500">✔</span> <strong>Unified
+                                App:</strong> Book influencers like a cab.</li>
+                        <li class="flex items-start"><span class="mr-3 text-green-500">✔</span> <strong>Public
+                                Pricing:</strong> Fixed rates for Reels, Stories, Posts.</li>
+                        <li class="flex items-start"><span class="mr-3 text-green-500">✔</span> <strong>Escrow
+                                Security:</strong> Payments are safe until work is done.</li>
+                        <li class="flex items-start"><span class="mr-3 text-green-500">✔</span> <strong>Real-time
+                                Tracking:</strong> Live campaign analytics.</li>
                     </ul>
                 </div>
             </div>
@@ -175,14 +188,16 @@
     </section>
 
     <!-- SECTION 3 — BUSINESS MODEL (TRANSPARENCY) -->
-    <section class="py-20 bg-gray-900 section-reveal border-t border-gray-800">
+    <!-- REMOVED 'section-reveal' for immediate visibility -->
+    <section class="py-20 bg-gray-900 border-t border-gray-800">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-12">Fair Business Model</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="p-6 bg-gray-800 rounded-xl hover:bg-gray-750 transition border border-gray-700">
                     <div class="text-4xl mb-4">💸</div>
                     <h4 class="text-xl font-bold mb-2">15% Commission</h4>
-                    <p class="text-gray-400 text-sm">We take a transparent flat fee per transaction. No hidden margins.</p>
+                    <p class="text-gray-400 text-sm">We take a transparent flat fee per transaction. No hidden margins.
+                    </p>
                 </div>
                 <div class="p-6 bg-gray-800 rounded-xl hover:bg-gray-750 transition border border-gray-700">
                     <div class="text-4xl mb-4">🌟</div>
@@ -202,38 +217,45 @@
     <section id="roadmap" class="py-20 bg-[#121820] section-reveal">
         <div class="max-w-5xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 text-center">Product Roadmap (2025-2026)</h2>
-            
+
             <div class="relative border-l-4 border-green-500 ml-6 md:ml-12 space-y-12">
                 <!-- Item 1 -->
                 <div class="relative pl-8">
-                    <span class="absolute -left-[1.3rem] top-1 h-6 w-6 rounded-full bg-green-500 border-4 border-gray-900"></span>
+                    <span
+                        class="absolute -left-[1.3rem] top-1 h-6 w-6 rounded-full bg-green-500 border-4 border-gray-900"></span>
                     <h3 class="text-xl font-bold text-white flex items-center">
                         <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded mr-3">COMPLETED</span>
                         Foundation
                     </h3>
-                    <p class="text-gray-400 mt-2">✅ Domain Acquisition + Branding<br>✅ Social Media Setup<br>✅ Core Team Assembly</p>
+                    <p class="text-gray-400 mt-2">✅ Domain Acquisition + Branding<br>✅ Social Media Setup<br>✅ Core
+                        Team Assembly</p>
                 </div>
-                
+
                 <!-- Item 2 -->
                 <div class="relative pl-8">
-                    <span class="absolute -left-[1.3rem] top-1 h-6 w-6 rounded-full bg-yellow-500 border-4 border-gray-900"></span>
+                    <span
+                        class="absolute -left-[1.3rem] top-1 h-6 w-6 rounded-full bg-yellow-500 border-4 border-gray-900"></span>
                     <h3 class="text-xl font-bold text-white flex items-center">
-                        <span class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded mr-3">IN PROGRESS</span>
+                        <span class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded mr-3">IN
+                            PROGRESS</span>
                         Q4 2025: Development
                     </h3>
-                    <p class="text-gray-400 mt-2">🔨 Landing Page Launch (Testing)<br>🔨 First 50 Influencers Onboarding<br>🔨 MVP Development</p>
+                    <p class="text-gray-400 mt-2">🔨 Landing Page Launch (Testing)<br>🔨 First 50 Influencers
+                        Onboarding<br>🔨 MVP Development</p>
                 </div>
 
                 <!-- Item 3 -->
                 <div class="relative pl-8">
-                    <span class="absolute -left-[1.3rem] top-1 h-6 w-6 rounded-full bg-gray-600 border-4 border-gray-900"></span>
+                    <span
+                        class="absolute -left-[1.3rem] top-1 h-6 w-6 rounded-full bg-gray-600 border-4 border-gray-900"></span>
                     <h3 class="text-xl font-bold text-gray-300">Jan 2026: MVP Launch</h3>
                     <p class="text-gray-500 mt-2">🚀 Beta launch for first 500 users<br>🚀 Analytics Dashboard Live</p>
                 </div>
 
                 <!-- Item 4 -->
                 <div class="relative pl-8">
-                    <span class="absolute -left-[1.3rem] top-1 h-6 w-6 rounded-full bg-gray-600 border-4 border-gray-900"></span>
+                    <span
+                        class="absolute -left-[1.3rem] top-1 h-6 w-6 rounded-full bg-gray-600 border-4 border-gray-900"></span>
                     <h3 class="text-xl font-bold text-gray-300">Q2 2026: Expansion</h3>
                     <p class="text-gray-500 mt-2">📱 App Listing (Play Store / iOS)<br>💸 Automated Payout System</p>
                 </div>
@@ -246,11 +268,12 @@
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-6">Why Invest in UchitPromo?</h2>
             <p class="text-xl text-green-200 mb-10 font-semibold">Tapping into a fast-growing $32B Influencer Market.</p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-left">
                 <div class="p-5 bg-gray-900 rounded-lg">
                     <h4 class="font-bold text-white mb-2">Scalable Model</h4>
-                    <p class="text-sm text-gray-400">Low CAC (Customer Acquisition Cost) with high LTV (Lifetime Value) potential.</p>
+                    <p class="text-sm text-gray-400">Low CAC (Customer Acquisition Cost) with high LTV (Lifetime Value)
+                        potential.</p>
                 </div>
                 <div class="p-5 bg-gray-900 rounded-lg">
                     <h4 class="font-bold text-white mb-2">Problem Clarity</h4>
@@ -262,31 +285,58 @@
                 </div>
                 <div class="p-5 bg-gray-900 rounded-lg">
                     <h4 class="font-bold text-white mb-2">Differentiation</h4>
-                    <p class="text-sm text-gray-400">Unlike Qoruz/Upfluence, we focus on transaction ease, not just data.</p>
+                    <p class="text-sm text-gray-400">Unlike Qoruz/Upfluence, we focus on transaction ease, not just data.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 6 — FOR BRANDS (Lead Gen) -->
+    <!-- SECTION 6 — FOR BRANDS (Lead Gen + Gemini Feature) -->
     <section id="for-brands" class="py-20 bg-gray-900 section-reveal">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div>
                 <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">Brands: Stop Overpaying.</h2>
                 <p class="text-lg text-gray-400 mb-8">Get predictable results with transparency.</p>
-                
+
                 <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-green-500 mb-8">
                     <h3 class="font-bold text-white mb-2">Target Audience Psychology</h3>
-                    <p class="text-gray-400 text-sm">Small-to-medium brands don't want complexity. They want visibility, conversion, and assurance.</p>
+                    <p class="text-gray-400 text-sm">Small-to-medium brands don't want complexity. They want visibility,
+                        conversion, and assurance.</p>
                 </div>
 
                 <a href="#guide-download"
                     class="inline-block cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg hover:shadow-green-500/50">
                     👉 Join Beta for Brands
                 </a>
+
+                <!-- Gemini API Integration: Campaign Idea Generator -->
+                <div class="mt-10 p-6 bg-gray-800 rounded-xl shadow-2xl border border-green-500/50">
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">✨ AI-Powered Campaign Idea Generator</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Apne product aur target audience ke liye turant creative ideas
+                        paayein.</p>
+
+                    <input id="ai_product" type="text" placeholder="Product/Service ka naam (e.g., Organic Coffee)"
+                        class="w-full p-3 mb-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:ring-green-500 focus:border-green-500" />
+                    <input id="ai_audience" type="text" placeholder="Target Audience (e.g., Gen Z, Fitness Enthusiasts)"
+                        class="w-full p-3 mb-4 rounded-lg bg-gray-900 text-white border border-gray-700 focus:ring-green-500 focus:border-green-500" />
+
+                    <button onclick="window.handleIdeaGeneration()" id="generateIdeaBtn"
+                        class="w-full cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg hover:shadow-green-500/50 disabled:opacity-50"
+                        data-original-text="✨ Generate Creative Idea">
+                        ✨ Generate Creative Idea
+                    </button>
+
+                    <div id="ai_output" class="mt-6 p-4 bg-gray-900 rounded-lg border border-gray-700 hidden">
+                        <h4 class="font-bold text-lg mb-2 text-white">Suggested Campaign:</h4>
+                        <p id="ai_result_text" class="text-gray-300 whitespace-pre-wrap">Loading idea...</p>
+                    </div>
+                </div>
+
             </div>
             <!-- Mockup -->
-            <div class="bg-gray-800 rounded-xl h-64 flex items-center justify-center text-gray-500 text-xl font-semibold border-2 border-gray-700 border-dashed">
+            <div
+                class="bg-gray-800 rounded-xl h-64 flex items-center justify-center text-gray-500 text-xl font-semibold border-2 border-gray-700 border-dashed">
                 [Brand Dashboard: Campaign View]
             </div>
         </div>
@@ -295,16 +345,17 @@
     <!-- SECTION 7 — FOR INFLUENCERS (Lead Gen) -->
     <section id="for-influencers" class="py-20 bg-[#121820] border-t border-gray-800 section-reveal">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-             <!-- Mockup -->
-             <div class="bg-gray-800 rounded-xl h-64 flex items-center justify-center text-gray-500 text-xl font-semibold order-2 md:order-1 border-2 border-gray-700 border-dashed">
+            <!-- Mockup -->
+            <div
+                class="bg-gray-800 rounded-xl h-64 flex items-center justify-center text-gray-500 text-xl font-semibold order-2 md:order-1 border-2 border-gray-700 border-dashed">
                 [Influencer App: Order Accept Screen]
             </div>
             <div class="order-1 md:order-2">
                 <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">Influencers: Instant Orders.</h2>
                 <p class="text-lg text-gray-400 mb-8">No DM negotiations. Just accept and create.</p>
 
-                 <!-- Lead Capture Form -->
-                 <div class="mt-8 p-6 bg-gray-700 rounded-xl shadow-inner">
+                <!-- Lead Capture Form -->
+                <div class="mt-8 p-6 bg-gray-700 rounded-xl shadow-inner">
                     <p class="text-xl font-bold mb-3 text-white">Join the Launch Squad (First 50)</p>
                     <form id="influencerForm" onsubmit="event.preventDefault(); window.saveInfluencerLead(this);">
                         <input id="influencerEmail" type="email" placeholder="Enter your email" required
@@ -320,10 +371,12 @@
     </section>
 
     <!-- SECTION 8 — LEAD MAGNET (FOR BRANDS) -->
-    <section id="guide-download" class="py-20 bg-green-900/30 border-t border-b border-green-700/50 section-reveal">
+    <section id="guide-download"
+        class="py-20 bg-green-900/30 border-t border-b border-green-700/50 section-reveal">
         <div class="max-w-3xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-extrabold mb-4 text-white">Download Project Report</h2>
-            <p class="text-xl text-green-200 mb-8">Interested in our vision? Get the full Investor Deck & Strategy Guide.</p>
+            <p class="text-xl text-green-200 mb-8">Interested in our vision? Get the full Investor Deck & Strategy Guide.
+            </p>
 
             <form onsubmit="event.preventDefault(); window.saveBrandLead(this);"
                 class="max-w-md mx-auto flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -337,7 +390,7 @@
     </section>
 
     <!-- SECTION 9 — FINAL CTA -->
-    <section id="final-cta" class="py-20 bg-gray-900 border-t border-gray-800 text-center">
+    <section id="final-cta" class="py-20 bg-gray-900 border-t border-gray-800 text-center section-reveal">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 text-white">The Future of Influence is Here.</h2>
             <h3 class="text-2xl text-gradient font-bold mb-12">Be part of the revolution.</h3>
@@ -355,9 +408,9 @@
     <section id="lead-display" class="py-20 bg-gray-950 border-t border-gray-800 section-reveal">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-10 text-center text-white">Live Testing Data (Admin View)</h2>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
+
                 <!-- Influencer Leads -->
                 <div class="p-6 bg-gray-900 rounded-xl shadow-xl border border-green-700/50">
                     <h3 class="text-xl font-bold mb-4 text-green-400">⭐ Influencer Leads</h3>
@@ -398,7 +451,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Firebase, Scroll Reveal Animation and Message Box -->
+    <!-- JavaScript for Firebase, Scroll Reveal Animation, Message Box, and Gemini Feature -->
     <script type="module">
         // Firebase Imports
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -409,14 +462,20 @@
         let app, db, auth;
         let authReady = false;
 
+        // --- GEMINI API CONFIGURATION ---
+        // Using gemini-2.5-flash-preview-09-2025 for text generation with Google Search grounding
+        const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent";
+        const API_KEY = ""; // Canvas will automatically provide this at runtime
+
         // Configuration
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        
+
         let firebaseConfig;
         if (typeof __firebase_config !== 'undefined') {
             firebaseConfig = JSON.parse(__firebase_config);
         } else {
+            // Default config for local testing (replace with your actual public keys if needed)
             firebaseConfig = {
                 apiKey: "AIzaSyBF7z3Df7XBOLZhrZRBSwY0y0TI8Cz-6zk",
                 authDomain: "uchitpromo-73113.firebaseapp.com",
@@ -443,7 +502,7 @@
                 onAuthStateChanged(auth, (user) => {
                     authReady = !!user;
                     if (user) {
-                        loadAllLeads(); 
+                        loadAllLeads();
                     }
                 });
 
@@ -468,18 +527,98 @@
         }
 
         function initScrollReveal() {
-            const observer = new IntersectionObserver((entries) => {
+            const sections = document.querySelectorAll('.section-reveal');
+
+            // Set up the observer
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('show');
-                        observer.unobserve(entry.target); 
+                        obs.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.section-reveal').forEach(el => {
+            // Start observing all elements
+            sections.forEach(el => {
                 observer.observe(el);
             });
+        }
+
+        // Helper function for exponential backoff retry
+        async function fetchWithRetry(url, options, maxRetries = 5) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    // Check for rate limit status (429) before throwing an error
+                    if (response.status !== 429) return response; 
+                } catch (error) {
+                    // Ignore connection errors during retry; let the loop continue
+                }
+                // Wait using exponential backoff (1s, 2s, 4s, ...)
+                const delay = Math.pow(2, i) * 1000;
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+            throw new Error("API request failed after multiple retries.");
+        }
+
+        // --- GEMINI API FUNCTION ---
+        window.handleIdeaGeneration = async function () {
+            const product = document.getElementById('ai_product').value.trim();
+            const audience = document.getElementById('ai_audience').value.trim();
+            const outputDiv = document.getElementById('ai_output');
+            const resultText = document.getElementById('ai_result_text');
+            const btn = document.getElementById('generateIdeaBtn');
+
+            if (!product || !audience) {
+                window.showMessage("Product aur Target Audience dono daalein.", false);
+                return;
+            }
+
+            const originalText = btn.getAttribute('data-original-text');
+            btn.textContent = 'Generating... (Kuch seconds lag sakte hain)';
+            btn.disabled = true;
+            outputDiv.classList.add('hidden');
+            resultText.textContent = ''; // Clear previous results
+
+            try {
+                // System Instruction: Marketing Strategist ka role define karna
+                const systemPrompt = "Aap ek experienced digital marketing strategist hain. Aapka kaam hai di gayi product aur target audience ke liye ek bahut hi unique, engaging aur transparent influencer campaign idea suggest karna. Response mein kewal campaign ka naam, content format (Reel/Post/Story), aur ek choti si description/strategy dein. Apni baatcheet (conversational) style ko hatakar kewal professional marketing content generate karein.";
+                const userQuery = `Product: ${product}. Target Audience: ${audience}. Campaign idea do.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    // Google Search grounding enable karna
+                    tools: [{ "google_search": {} }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+
+                const response = await fetchWithRetry(GEMINI_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                const generatedText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Idea nahi mil paya. Kripya doobara prayas karein.";
+
+                resultText.textContent = generatedText;
+                outputDiv.classList.remove('hidden');
+                window.showMessage("Campaign Idea Safaltapoorvak mil gaya!", true);
+
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                resultText.textContent = `Error: Idea generate nahi ho paya. ${error.message}`;
+                outputDiv.classList.remove('hidden');
+                window.showMessage("Generation mein error aa gaya.", false);
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
         }
 
         // --- FIRESTORE OPERATIONS ---
@@ -536,22 +675,31 @@
             if (!db) return;
             const collectionPath = `artifacts/${appId}/public/data/${collectionName}`;
             const leadsContainer = document.getElementById(containerId);
-            // NOTE: orderBy('timestamp') is used here for real-time order, but for production,
-            // we'd fetch and sort in memory to avoid needing a Firestore index.
-            const q = query(collection(db, collectionPath), orderBy('timestamp', 'desc'));
+
+            // Fetch data and sort in memory to avoid needing a Firestore index on 'timestamp'
+            // For real-time updates, we still use onSnapshot.
+            const q = query(collection(db, collectionPath));
 
             onSnapshot(q, (querySnapshot) => {
-                const leads = [];
+                let leads = [];
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
                     if (data.email) {
-                        const date = data.timestamp && data.timestamp.toDate ? 
-                            data.timestamp.toDate().toLocaleString('en-IN', {
-                                day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
-                            }) : 'Just now';
-                        leads.push({ id: doc.id, email: data.email, source: data.source, timestamp: date });
+                        // Extract timestamp and handle serverTimestamp() still being null/pending
+                        const dateValue = data.timestamp && data.timestamp.toDate ?
+                            data.timestamp.toDate() : new Date();
+
+                        const formattedDate = dateValue.toLocaleString('en-IN', {
+                            day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
+                        });
+
+                        leads.push({ id: doc.id, email: data.email, source: data.source, timestamp: dateValue, formattedDate: formattedDate });
                     }
                 });
+
+                // Sort in memory by timestamp descending
+                leads.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+
 
                 if (leads.length === 0) {
                     leadsContainer.innerHTML = '<div class="p-3 bg-gray-800 rounded text-center text-gray-500 text-sm">No leads in this collection.</div>';
@@ -567,7 +715,7 @@
                             <span class="text-white font-medium">${lead.email}</span>
                             <div class="text-xs text-gray-400">${lead.source}</div>
                         </div>
-                        <div class="text-gray-400 text-xs">${lead.timestamp}</div>
+                        <div class="text-gray-400 text-xs">${lead.formattedDate}</div>
                     `;
                     leadsContainer.appendChild(el);
                 });
@@ -583,4 +731,5 @@
         initFirebase();
     </script>
 </body>
+
 </html>
