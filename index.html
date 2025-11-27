@@ -345,8 +345,8 @@
                     <form id="influencerForm" onsubmit="event.preventDefault(); window.saveInfluencerLead(this);">
                         <input id="influencerEmail" type="email" placeholder="Enter your email" required
                             class="w-full p-3 mb-3 rounded-lg bg-gray-800 text-white border border-green-500 focus:ring-green-500 focus:border-green-500" />
-                        <button type="submit"
-                            class="w-full cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl">
+                        <button type="submit" id="influencerSubmitBtn" disabled
+                            class="w-full cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl disabled:opacity-50">
                             🚀 Sign Up Now
                         </button>
                     </form>
@@ -367,7 +367,8 @@
                 class="max-w-md mx-auto flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <input id="brandEmail" type="email" placeholder="Business/Investor Email" required
                     class="flex-grow p-4 rounded-xl bg-gray-800 text-white border border-green-500 focus:ring-green-500 focus:border-green-500" />
-                <button type="submit" class="cta-button-brand px-8 py-4 text-lg font-bold text-white rounded-xl">
+                <button type="submit" id="brandSubmitBtn" disabled
+                    class="cta-button-brand px-8 py-4 text-lg font-bold text-white rounded-xl disabled:opacity-50">
                     📥 Request Access
                 </button>
             </form>
@@ -445,16 +446,12 @@
 
         // Global Firebase variables
         let app, db, auth;
-        let authReady = false;
+        let authReady = false; // Flag to check if auth state has been determined
 
         // --- GEMINI API CONFIGURATION ---
         const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent";
         
         // IMPORTANT for Netlify Deployment:
-        // Netlify uses environment variables for secure keys.
-        // In a typical web app, you would access the key here using your build process (e.g., `process.env.GEMINI_API_KEY`).
-        // For this Canvas environment, we must leave it blank, as the system injects it.
-        // If you see a 401 error outside Canvas, your key is not configured correctly in Netlify/Local environment.
         const API_KEY = ""; 
 
         // Configuration
@@ -476,29 +473,56 @@
                 measurementId: "G-NC14183SZ6"
             };
         }
+        
+        // Function to enable all form buttons after initialization
+        function enableForms() {
+            const influencerBtn = document.getElementById('influencerSubmitBtn');
+            const brandBtn = document.getElementById('brandSubmitBtn');
+
+            if (influencerBtn) influencerBtn.disabled = false;
+            if (brandBtn) brandBtn.disabled = false;
+        }
 
         async function initFirebase() {
-            try {
-                app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
+            // Return a promise that resolves when the first onAuthStateChanged fires.
+            return new Promise(async (resolve) => {
+                try {
+                    app = initializeApp(firebaseConfig);
+                    auth = getAuth(app);
+                    db = getFirestore(app);
 
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
+                    // This flag ensures we only resolve the promise once
+                    let initialCheckComplete = false;
 
-                onAuthStateChanged(auth, (user) => {
-                    authReady = !!user;
-                    if (user) {
-                        loadAllLeads();
+                    // Set up the listener first
+                    onAuthStateChanged(auth, (user) => {
+                        authReady = !!user;
+                        if (user) {
+                            loadAllLeads();
+                        }
+
+                        if (!initialCheckComplete) {
+                            initialCheckComplete = true;
+                            resolve(); // Resolve the promise once the initial state is determined
+                        }
+                    });
+
+                    // Trigger the initial sign-in attempt
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                    } else {
+                        await signInAnonymously(auth);
                     }
-                });
 
-            } catch (error) {
-                console.error("Firebase Initialization Error:", error);
-            }
+                } catch (error) {
+                    console.error("Firebase Initialization Error:", error);
+                    // If initialization fails completely, we still resolve to unblock the UI
+                    if (!initialCheckComplete) {
+                        authReady = false;
+                        resolve();
+                    }
+                }
+            });
         }
 
         // --- UI UTILITIES ---
@@ -602,7 +626,7 @@
         // --- FIRESTORE OPERATIONS ---
         window.saveInfluencerLead = async function (form) {
             if (!authReady) {
-                showMessage("System initializing...", false);
+                showMessage("Initialization not complete. Please wait a moment.", false);
                 return;
             }
             const emailInput = form.querySelector('#influencerEmail');
@@ -626,7 +650,7 @@
 
         window.saveBrandLead = async function (form) {
             if (!authReady) {
-                showMessage("System initializing...", false);
+                showMessage("Initialization not complete. Please wait a moment.", false);
                 return;
             }
             const emailInput = form.querySelector('#brandEmail');
@@ -706,7 +730,8 @@
             subscribeToCollection('brand_leads', 'brand-leads-container');
         }
 
-        initFirebase();
+        // Initialize Firebase and then enable the forms
+        initFirebase().then(enableForms);
     </script>
 </body>
 
