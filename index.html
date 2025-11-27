@@ -52,19 +52,6 @@
             border-radius: 9999px;
         }
 
-        /* Custom class for initial hidden state and transition */
-        .section-reveal {
-            opacity: 0;
-            transform: translateY(48px);
-            /* Start 3rem down */
-            transition: opacity 1.0s ease-out, transform 1.0s ease-out;
-        }
-
-        .section-reveal.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Message Box Styling */
         #message-box {
             position: fixed;
@@ -144,7 +131,6 @@
     </section>
 
     <!-- SECTION 2 — THE PROBLEM VS SOLUTION -->
-    <!-- REMOVED 'section-reveal' for immediate visibility -->
     <section class="py-20 bg-[#121820]">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -188,7 +174,6 @@
     </section>
 
     <!-- SECTION 3 — BUSINESS MODEL (TRANSPARENCY) -->
-    <!-- REMOVED 'section-reveal' for immediate visibility -->
     <section class="py-20 bg-gray-900 border-t border-gray-800">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-12">Fair Business Model</h2>
@@ -214,7 +199,7 @@
     </section>
 
     <!-- SECTION 4 — ROADMAP -->
-    <section id="roadmap" class="py-20 bg-[#121820] section-reveal">
+    <section id="roadmap" class="py-20 bg-[#121820]">
         <div class="max-w-5xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 text-center">Product Roadmap (2025-2026)</h2>
 
@@ -264,7 +249,7 @@
     </section>
 
     <!-- SECTION 5 — INVESTMENT APPEAL -->
-    <section class="py-20 bg-green-900/20 border-y border-green-900/30 section-reveal">
+    <section class="py-20 bg-green-900/20 border-y border-green-900/30">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-6">Why Invest in UchitPromo?</h2>
             <p class="text-xl text-green-200 mb-10 font-semibold">Tapping into a fast-growing $32B Influencer Market.</p>
@@ -293,7 +278,7 @@
     </section>
 
     <!-- SECTION 6 — FOR BRANDS (Lead Gen + Gemini Feature) -->
-    <section id="for-brands" class="py-20 bg-gray-900 section-reveal">
+    <section id="for-brands" class="py-20 bg-gray-900">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div>
                 <h2 class="text-4xl sm:text-5xl font-extrabold mb-4">Brands: Stop Overpaying.</h2>
@@ -343,7 +328,7 @@
     </section>
 
     <!-- SECTION 7 — FOR INFLUENCERS (Lead Gen) -->
-    <section id="for-influencers" class="py-20 bg-[#121820] border-t border-gray-800 section-reveal">
+    <section id="for-influencers" class="py-20 bg-[#121820] border-t border-gray-800">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <!-- Mockup -->
             <div
@@ -372,7 +357,7 @@
 
     <!-- SECTION 8 — LEAD MAGNET (FOR BRANDS) -->
     <section id="guide-download"
-        class="py-20 bg-green-900/30 border-t border-b border-green-700/50 section-reveal">
+        class="py-20 bg-green-900/30 border-t border-b border-green-700/50">
         <div class="max-w-3xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-extrabold mb-4 text-white">Download Project Report</h2>
             <p class="text-xl text-green-200 mb-8">Interested in our vision? Get the full Investor Deck & Strategy Guide.
@@ -390,7 +375,7 @@
     </section>
 
     <!-- SECTION 9 — FINAL CTA -->
-    <section id="final-cta" class="py-20 bg-gray-900 border-t border-gray-800 text-center section-reveal">
+    <section id="final-cta" class="py-20 bg-gray-900 border-t border-gray-800 text-center">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 text-white">The Future of Influence is Here.</h2>
             <h3 class="text-2xl text-gradient font-bold mb-12">Be part of the revolution.</h3>
@@ -405,7 +390,7 @@
     </section>
 
     <!-- SECTION 10 — ADMIN VIEW (Unified Display) -->
-    <section id="lead-display" class="py-20 bg-gray-950 border-t border-gray-800 section-reveal">
+    <section id="lead-display" class="py-20 bg-gray-950 border-t border-gray-800">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-10 text-center text-white">Live Testing Data (Admin View)</h2>
 
@@ -451,7 +436,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Firebase, Scroll Reveal Animation, Message Box, and Gemini Feature -->
+    <!-- JavaScript for Firebase, Message Box, and Gemini Feature -->
     <script type="module">
         // Firebase Imports
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -463,9 +448,14 @@
         let authReady = false;
 
         // --- GEMINI API CONFIGURATION ---
-        // Using gemini-2.5-flash-preview-09-2025 for text generation with Google Search grounding
         const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent";
-        const API_KEY = ""; // Canvas will automatically provide this at runtime
+        
+        // IMPORTANT for Netlify Deployment:
+        // Netlify uses environment variables for secure keys.
+        // In a typical web app, you would access the key here using your build process (e.g., `process.env.GEMINI_API_KEY`).
+        // For this Canvas environment, we must leave it blank, as the system injects it.
+        // If you see a 401 error outside Canvas, your key is not configured correctly in Netlify/Local environment.
+        const API_KEY = ""; 
 
         // Configuration
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -506,8 +496,6 @@
                     }
                 });
 
-                initScrollReveal();
-
             } catch (error) {
                 console.error("Firebase Initialization Error:", error);
             }
@@ -526,31 +514,12 @@
             }, 3000);
         }
 
-        function initScrollReveal() {
-            const sections = document.querySelectorAll('.section-reveal');
-
-            // Set up the observer
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // Start observing all elements
-            sections.forEach(el => {
-                observer.observe(el);
-            });
-        }
-
         // Helper function for exponential backoff retry
         async function fetchWithRetry(url, options, maxRetries = 5) {
             for (let i = 0; i < maxRetries; i++) {
                 try {
                     const response = await fetch(url, options);
-                    // Check for rate limit status (429) before throwing an error
+                    // Check for rate limit status (429) or unauthorized (401) before throwing an error
                     if (response.status !== 429) return response; 
                 } catch (error) {
                     // Ignore connection errors during retry; let the loop continue
@@ -580,6 +549,9 @@
             btn.disabled = true;
             outputDiv.classList.add('hidden');
             resultText.textContent = ''; // Clear previous results
+            
+            const finalApiUrl = `${GEMINI_API_URL}?key=${API_KEY}`;
+
 
             try {
                 // System Instruction: Marketing Strategist ka role define karna
@@ -593,11 +565,16 @@
                     systemInstruction: { parts: [{ text: systemPrompt }] },
                 };
 
-                const response = await fetchWithRetry(GEMINI_API_URL, {
+                const response = await fetchWithRetry(finalApiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
+
+                // Check for 401 Unauthorized specifically
+                if (response.status === 401) {
+                    throw new Error("401 Unauthorized: Gemini API Key missing or invalid. Netlify users: Ensure your Environment Variable is correctly set.");
+                }
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -612,6 +589,7 @@
 
             } catch (error) {
                 console.error("Gemini API Error:", error);
+                // Display the specific error message to the user
                 resultText.textContent = `Error: Idea generate nahi ho paya. ${error.message}`;
                 outputDiv.classList.remove('hidden');
                 window.showMessage("Generation mein error aa gaya.", false);
