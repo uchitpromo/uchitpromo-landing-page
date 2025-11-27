@@ -8,7 +8,7 @@
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Use Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -73,6 +73,11 @@
         #message-box.visible {
             opacity: 1;
             pointer-events: auto;
+        }
+
+        .disabled-initial {
+            background-color: #4b5563; /* Gray background for disabled */
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -306,10 +311,10 @@
                     <input id="ai_audience" type="text" placeholder="Target Audience (e.g., Gen Z, Fitness Enthusiasts)"
                         class="w-full p-3 mb-4 rounded-lg bg-gray-900 text-white border border-gray-700 focus:ring-green-500 focus:border-green-500" />
 
-                    <button onclick="window.handleIdeaGeneration()" id="generateIdeaBtn"
-                        class="w-full cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg hover:shadow-green-500/50 disabled:opacity-50"
+                    <button onclick="window.handleIdeaGeneration()" id="generateIdeaBtn" disabled
+                        class="w-full cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg hover:shadow-green-500/50 disabled:opacity-50 disabled-initial"
                         data-original-text="✨ Generate Creative Idea">
-                        ✨ Generate Creative Idea
+                        Initializing System...
                     </button>
 
                     <div id="ai_output" class="mt-6 p-4 bg-gray-900 rounded-lg border border-gray-700 hidden">
@@ -346,8 +351,8 @@
                         <input id="influencerEmail" type="email" placeholder="Enter your email" required
                             class="w-full p-3 mb-3 rounded-lg bg-gray-800 text-white border border-green-500 focus:ring-green-500 focus:border-green-500" />
                         <button type="submit" id="influencerSubmitBtn" disabled
-                            class="w-full cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl disabled:opacity-50">
-                            🚀 Sign Up Now
+                            class="w-full cta-button-brand px-8 py-3 text-lg font-bold text-white rounded-xl disabled:opacity-50 disabled-initial">
+                            Initializing System...
                         </button>
                     </form>
                 </div>
@@ -368,8 +373,8 @@
                 <input id="brandEmail" type="email" placeholder="Business/Investor Email" required
                     class="flex-grow p-4 rounded-xl bg-gray-800 text-white border border-green-500 focus:ring-green-500 focus:border-green-500" />
                 <button type="submit" id="brandSubmitBtn" disabled
-                    class="cta-button-brand px-8 py-4 text-lg font-bold text-white rounded-xl disabled:opacity-50">
-                    📥 Request Access
+                    class="cta-button-brand px-8 py-4 text-lg font-bold text-white rounded-xl disabled:opacity-50 disabled-initial">
+                    Initializing System...
                 </button>
             </form>
         </div>
@@ -474,13 +479,32 @@
             };
         }
         
+        // Original text for buttons
+        const INFLUENCER_BTN_TEXT = '🚀 Sign Up Now';
+        const BRAND_BTN_TEXT = '📥 Request Access';
+        const GEMINI_BTN_TEXT = '✨ Generate Creative Idea';
+
         // Function to enable all form buttons after initialization
         function enableForms() {
             const influencerBtn = document.getElementById('influencerSubmitBtn');
             const brandBtn = document.getElementById('brandSubmitBtn');
+            const geminiBtn = document.getElementById('generateIdeaBtn');
 
-            if (influencerBtn) influencerBtn.disabled = false;
-            if (brandBtn) brandBtn.disabled = false;
+            if (influencerBtn) {
+                influencerBtn.disabled = false;
+                influencerBtn.textContent = INFLUENCER_BTN_TEXT;
+                influencerBtn.classList.remove('disabled-initial');
+            }
+            if (brandBtn) {
+                brandBtn.disabled = false;
+                brandBtn.textContent = BRAND_BTN_TEXT;
+                brandBtn.classList.remove('disabled-initial');
+            }
+            if (geminiBtn) {
+                geminiBtn.disabled = false;
+                geminiBtn.textContent = GEMINI_BTN_TEXT;
+                geminiBtn.classList.remove('disabled-initial');
+            }
         }
 
         async function initFirebase() {
@@ -491,7 +515,6 @@
                     auth = getAuth(app);
                     db = getFirestore(app);
 
-                    // This flag ensures we only resolve the promise once
                     let initialCheckComplete = false;
 
                     // Set up the listener first
@@ -516,7 +539,6 @@
 
                 } catch (error) {
                     console.error("Firebase Initialization Error:", error);
-                    // If initialization fails completely, we still resolve to unblock the UI
                     if (!initialCheckComplete) {
                         authReady = false;
                         resolve();
@@ -543,16 +565,21 @@
             for (let i = 0; i < maxRetries; i++) {
                 try {
                     const response = await fetch(url, options);
-                    // Check for rate limit status (429) or unauthorized (401) before throwing an error
+                    // Check for rate limit status (429) or unauthorized (401/403) before throwing an error
+                    if (response.status === 403) {
+                         // Critical error, don't retry
+                         throw new Error("403 Forbidden: API Key has permission issues.");
+                    }
                     if (response.status !== 429) return response; 
                 } catch (error) {
+                    if (error.message.includes('403 Forbidden')) throw error;
                     // Ignore connection errors during retry; let the loop continue
                 }
                 // Wait using exponential backoff (1s, 2s, 4s, ...)
                 const delay = Math.pow(2, i) * 1000;
                 await new Promise(resolve => setTimeout(resolve, delay));
             }
-            throw new Error("API request failed after multiple retries.");
+            throw new Error("API request failed after multiple retries (potentially rate limited).");
         }
 
         // --- GEMINI API FUNCTION ---
@@ -563,13 +590,15 @@
             const resultText = document.getElementById('ai_result_text');
             const btn = document.getElementById('generateIdeaBtn');
 
+            if (btn.disabled) return; // Prevent clicks if still initializing
+            
             if (!product || !audience) {
                 window.showMessage("Product aur Target Audience dono daalein.", false);
                 return;
             }
 
             const originalText = btn.getAttribute('data-original-text');
-            btn.textContent = 'Generating... (Kuch seconds lag sakte hain)';
+            btn.textContent = 'Generating...';
             btn.disabled = true;
             outputDiv.classList.add('hidden');
             resultText.textContent = ''; // Clear previous results
@@ -595,13 +624,13 @@
                     body: JSON.stringify(payload)
                 });
 
-                // Check for 401 Unauthorized specifically
-                if (response.status === 401) {
-                    throw new Error("401 Unauthorized: Gemini API Key missing or invalid. Netlify users: Ensure your Environment Variable is correctly set.");
-                }
-
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorJson = await response.json();
+                    console.error("Gemini API Non-OK Response:", errorJson);
+                    if (response.status === 403) {
+                        throw new Error("403 Forbidden: Check your API Key's permissions or Project setup.");
+                    }
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
 
                 const result = await response.json();
@@ -614,7 +643,12 @@
             } catch (error) {
                 console.error("Gemini API Error:", error);
                 // Display the specific error message to the user
-                resultText.textContent = `Error: Idea generate nahi ho paya. ${error.message}`;
+                if (error.message.includes('403 Forbidden')) {
+                     resultText.textContent = `Error 403: Idea generate nahi ho paya. Iska matlab hai ki API key mein anumatiyon (permissions) ki samasya hai.`;
+                } else {
+                     resultText.textContent = `Error: Idea generate nahi ho paya. ${error.message}`;
+                }
+               
                 outputDiv.classList.remove('hidden');
                 window.showMessage("Generation mein error aa gaya.", false);
             } finally {
@@ -625,10 +659,7 @@
 
         // --- FIRESTORE OPERATIONS ---
         window.saveInfluencerLead = async function (form) {
-            if (!authReady) {
-                showMessage("Initialization not complete. Please wait a moment.", false);
-                return;
-            }
+            if (!authReady) return; // Should not happen due to disabled button logic
             const emailInput = form.querySelector('#influencerEmail');
             const email = emailInput.value.trim();
             if (!email) return showMessage("Please enter an email.", false);
@@ -649,10 +680,7 @@
         }
 
         window.saveBrandLead = async function (form) {
-            if (!authReady) {
-                showMessage("Initialization not complete. Please wait a moment.", false);
-                return;
-            }
+            if (!authReady) return; // Should not happen due to disabled button logic
             const emailInput = form.querySelector('#brandEmail');
             const email = emailInput.value.trim();
             if (!email) return showMessage("Please enter an email.", false);
@@ -679,7 +707,6 @@
             const leadsContainer = document.getElementById(containerId);
 
             // Fetch data and sort in memory to avoid needing a Firestore index on 'timestamp'
-            // For real-time updates, we still use onSnapshot.
             const q = query(collection(db, collectionPath));
 
             onSnapshot(q, (querySnapshot) => {
